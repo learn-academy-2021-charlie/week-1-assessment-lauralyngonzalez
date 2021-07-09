@@ -117,6 +117,20 @@ var numberExample2 = 27
 var numberExample3 = 7
 var numberExample4 = 19
 
+// Thought process: We need to first check which number is larger from the
+// two numbers, then subtract the smaller one from the larger one.
+
+const subtractFromLarger = (num1, num2) => {
+    if (num2 > num1) {  // num2 is larger than num1
+        return num2 - num1
+    } else {            // num1 is the same or larger than num2
+        return num1 - num2
+    }
+}
+
+console.log(subtractFromLarger(numberExample1, numberExample2)) // 15
+console.log(subtractFromLarger(numberExample3, numberExample4)) // 12
+console.log(subtractFromLarger(0, 0)) // 0
 
 
 // --------------------5) Copy/paste your code from #4. Refactor your code to also accept non-number edge cases. Inform your user if the variable passed into the subtraction function is not a number.
@@ -128,3 +142,25 @@ var numberExampleRefactor2 = "hello"
 
 var numberExampleRefactor3 = 27
 var numberExampleRefactor4 = 24
+
+// Thought process: We should first check if the given arguments
+// are numbers by using typeof, which returns a string of the type,
+// so we can compare it to the string "number".
+// If they're numbers then we can continue with the previous code.
+
+const subtractFromLargerRefactored = (num1, num2) => {
+    // Check if the input are numbers
+    if (typeof num1 !== "number" || typeof num2 !== "number") {
+        return "Your input is not a number"
+    }
+    // Subtract the smaller number from the larger
+    if (num2 > num1) {  // num2 is larger than num1
+        return num2 - num1
+    } else {            // num1 is the same or larger than num2
+        return num1 - num2
+    }
+}
+
+console.log(subtractFromLargerRefactored(numberExampleRefactor1, numberExampleRefactor2)) // Your input is not a number
+console.log(subtractFromLargerRefactored(numberExampleRefactor3, numberExampleRefactor4)) // 3
+console.log(subtractFromLargerRefactored(false, 0)) // Your input is not a number
